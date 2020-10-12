@@ -31,6 +31,7 @@ def main(image, ascii_chars, size):
 
     im2 = im.copy()
     im2 = im2.resize((size,size))
+    im2.show()
     minimum, maximum = stats(im2)
     pixels = im2.load()
 
@@ -40,4 +41,6 @@ def main(image, ascii_chars, size):
         print(value_to_ascii_char(floor((pixels[size-1,i][0]+pixels[size-1,i][1]+pixels[size-1,i][2])/3), ascii_chars, minimum, maximum),end='\n')
 
 if __name__ == '__main__':
-    main(argv[1], '@$#*!=;:~-,. ', 150) #from darker to lighter
+    #main(argv[1], '@$#*!=;:~-,. ', 150) #from darker to lighter
+    #main(argv[1], '@&B9#SGHMh352AXsri;:~-,. ', 150)
+    main(argv[1], '#&B9XSxs;:~-,. ', 150)
