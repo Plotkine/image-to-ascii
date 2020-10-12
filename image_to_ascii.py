@@ -27,20 +27,30 @@ def value_to_ascii_char(value, ascii_chars, minimum, maximum): #ascii_chars goes
     return ascii_chars[i - 1]
 
 def main(image, ascii_chars, size):
+    if (type(size/2) == int): #even size
+        size += 1
+
     im = Image.open(image)
 
     im2 = im.copy()
     im2 = im2.resize((size,size))
-    im2.show()
+    #im2.show()
     minimum, maximum = stats(im2)
     pixels = im2.load()
 
-    for i in range(size):
-        for j in range(size-1):
-            print(value_to_ascii_char(floor((pixels[j,i][0]+pixels[j,i][1]+pixels[j,i][2])/3), ascii_chars, minimum, maximum),end='')
-        print(value_to_ascii_char(floor((pixels[size-1,i][0]+pixels[size-1,i][1]+pixels[size-1,i][2])/3), ascii_chars, minimum, maximum),end='\n')
+    for i in range(0, size, 2): #looping on image lines
+        for j in range(size): #on image colons
+            average_1 = (pixels[j,i][0]+pixels[j,i][1]+pixels[j,i][2])/3
+            average_2 = (pixels[j,i+1][0]+pixels[j,i+1][1]+pixels[j,i+1][2])/3
+            average = floor((average_1 + average_2)/2)
+            print(value_to_ascii_char(average, ascii_chars, minimum, maximum),end='')
+        print('\n', end='')
 
 if __name__ == '__main__':
-    #main(argv[1], '@$#*!=;:~-,. ', 150) #from darker to lighter
-    #main(argv[1], '@&B9#SGHMh352AXsri;:~-,. ', 150)
-    main(argv[1], '#@&B9XSxs;:~-,. ', 150)
+    if len(argv) < 3:
+        print("Usage: python3 image_to_ascii.py image output_resolution")
+        print("Example: python3 image_to_ascii.py rickRoll.jpg 150")
+        exit()
+    #main(argv[1], '@$#*!=;:~-,. ', int(argv[2])) #from darker to lighter
+    #main(argv[1], '@&B9#SGHMh352AXsri;:~-,. ', int(argv[2]))
+    main(argv[1], '#&B9XSxs;:~-,. ', int(argv[2]))
