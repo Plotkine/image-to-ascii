@@ -43,4 +43,4 @@ def main(image, ascii_chars, size):
 if __name__ == '__main__':
     #main(argv[1], '@$#*!=;:~-,. ', 150) #from darker to lighter
     #main(argv[1], '@&B9#SGHMh352AXsri;:~-,. ', 150)
-    main(argv[1], '#&B9XSxs;:~-,. ', 150)
+    main(argv[1], '#@&B9XSxs;:~-,. ', 150)
