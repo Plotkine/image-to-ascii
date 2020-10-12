@@ -47,10 +47,11 @@ def main(image, ascii_chars, size):
         print('\n', end='')
 
 if __name__ == '__main__':
-    if len(argv) < 3:
-        print("Usage: python3 image_to_ascii.py image output_resolution")
-        print("Example: python3 image_to_ascii.py rickRoll.jpg 150")
+    if len(argv) < 4:
+        print("Usage: python3 image_to_ascii.py image output_resolution dark_or_light_background")
+        print("Example: python3 image_to_ascii.py rickRoll.jpg 150 dark")
         exit()
-    #main(argv[1], '@$#*!=;:~-,. ', int(argv[2])) #from darker to lighter
-    #main(argv[1], '@&B9#SGHMh352AXsri;:~-,. ', int(argv[2]))
-    main(argv[1], '#&B9XSxs;:~-,. ', int(argv[2]))
+    if argv[3] == "dark":
+        main(argv[1], '#&B9XSxs~;:-,. ', int(argv[2]))
+    else:
+        main(argv[1], ' .,-:;~sxSX9B&#', int(argv[2]))
