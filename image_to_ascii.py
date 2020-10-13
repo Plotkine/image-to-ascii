@@ -53,7 +53,6 @@ if __name__ == '__main__':
         print("Usage: python3 image_to_ascii.py image output_resolution dark/light")
         print("Example: python3 image_to_ascii.py rickRoll.jpg 150 dark")
         exit()
-    print(argv)
     if argv[3] == "dark":
         main(argv[1], '#&B9XSxs~;:-,. ', int(argv[2]))
     else:
