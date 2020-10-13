@@ -50,7 +50,7 @@ def main(image, ascii_chars, size):
 
 if __name__ == '__main__':
     if len(argv) < 4:
-        print("Usage: python3 image_to_ascii.py image output_resolution dark_or_light_background")
+        print("Usage: python3 image_to_ascii.py image output_resolution dark/light")
         print("Example: python3 image_to_ascii.py rickRoll.jpg 150 dark")
         exit()
     print(argv)
