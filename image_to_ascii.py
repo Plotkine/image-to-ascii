@@ -27,19 +27,21 @@ def value_to_ascii_char(value, ascii_chars, minimum, maximum): #ascii_chars goes
     return ascii_chars[i - 1]
 
 def main(image, ascii_chars, size):
-    if (type(size/2) == int): #even size
+    if ((size % 2) == 1): #even size
         size += 1
-
     im = Image.open(image)
-
     im2 = im.copy()
     im2 = im2.resize((size,size))
     #im2.show()
     minimum, maximum = stats(im2)
     pixels = im2.load()
 
-    for i in range(0, size, 2): #looping on image lines
-        for j in range(size): #on image colons
+    for i in range(0, size, 2): #looping on pixels lines
+        for j in range(size): #on pixels colons
+            #debug
+            '''print("i: "+str(i))
+            print("j: "+str(j))
+            print("size: "+str(size))'''
             average_1 = (pixels[j,i][0]+pixels[j,i][1]+pixels[j,i][2])/3
             average_2 = (pixels[j,i+1][0]+pixels[j,i+1][1]+pixels[j,i+1][2])/3
             average = floor((average_1 + average_2)/2)
@@ -51,6 +53,7 @@ if __name__ == '__main__':
         print("Usage: python3 image_to_ascii.py image output_resolution dark_or_light_background")
         print("Example: python3 image_to_ascii.py rickRoll.jpg 150 dark")
         exit()
+    print(argv)
     if argv[3] == "dark":
         main(argv[1], '#&B9XSxs~;:-,. ', int(argv[2]))
     else:
