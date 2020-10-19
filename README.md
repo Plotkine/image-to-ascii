@@ -1,4 +1,4 @@
-# jpg_to_ascii
+# image_to_ascii
 
 Requirements: **sudo pip3 install pillow**
 
